@@ -7,7 +7,7 @@ import {
   BarChart,
 } from "lucide-react";
 
-import { JobCategory, FeaturedJob, BlogPost } from "./index";
+import { JobCategory, FeaturedJob, BlogPost, Testimonial } from "./index";
 
 export const categories: JobCategory[] = [
   {
@@ -109,17 +109,53 @@ export const featuredJobs: FeaturedJob[] = [
 export const blogPosts: BlogPost[] = [
   {
     title: "What's Apex Talent?",
-    excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscin elit. At morbi turpis sagittis amet donec mecenas. Ac sapien consequat sed.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Blogs-SbpvNrcZy4it3tUwM36VziRXoyDjor.png"
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscin elit. At morbi turpis sagittis amet donec mecenas. Ac sapien consequat sed.",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Blogs-SbpvNrcZy4it3tUwM36VziRXoyDjor.png",
   },
   {
     title: "Introducing Apex Engage",
-    excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscin elit. At morbi turpis sagittis amet donec mecenas. Ac sapien consequat sed.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Blogs-SbpvNrcZy4it3tUwM36VziRXoyDjor.png"
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscin elit. At morbi turpis sagittis amet donec mecenas. Ac sapien consequat sed.",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Blogs-SbpvNrcZy4it3tUwM36VziRXoyDjor.png",
   },
   {
     title: "Premium vs Enterprise plan",
-    excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscin elit. At morbi turpis sagittis amet donec mecenas. Ac sapien consequat sed.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Blogs-SbpvNrcZy4it3tUwM36VziRXoyDjor.png"
-  }
-]
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscin elit. At morbi turpis sagittis amet donec mecenas. Ac sapien consequat sed.",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Blogs-SbpvNrcZy4it3tUwM36VziRXoyDjor.png",
+  },
+];
+
+export const testimonials: Testimonial[] = [
+  {
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectet adipiscing elit. Arcu nascetur a sequat nunc. Id nam tristique ultrices scet sit. Est eros, dignissim platea eget facilisis molestie phasellus lacus.",
+    author: {
+      name: "David Gosling",
+      position: "Art Designer",
+      avatar: "/placeholder.svg?height=48&width=48",
+    },
+  },
+  {
+    rating: 4,
+    text: "Lorem ipsum dolor sit amet, consectet adipiscing elit. Arcu nascetur a sequat nunc. Id nam tristique ultrices scet sit. Est eros, dignissim platea eget facilisis molestie phasellus lacus.",
+    author: {
+      name: "Alisha Johnson",
+      position: "UI/UX Designer",
+      avatar: "/placeholder.svg?height=48&width=48",
+    },
+  },
+  {
+    rating: 5,
+    text: "Lorem ipsum dolor sit amet, consectet adipiscing elit. Arcu nascetur a sequat nunc. Id nam tristique ultrices scet sit. Est eros, dignissim platea eget facilisis molestie phasellus lacus.",
+    author: {
+      name: "Harrison Ford",
+      position: "Finance Manager",
+      avatar: "/placeholder.svg?height=48&width=48",
+    },
+  },
+];
