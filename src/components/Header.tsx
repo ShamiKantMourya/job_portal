@@ -1,13 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
-import { Search, MapPin } from "lucide-react";
+import { Search, MapPin, Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
+
 import { Button } from "./UI/Button";
 import { Input } from "./UI/Input";
 
 const Header: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [location, setLocation] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuTransform = isMenuOpen ? "translateX(0)" : "translateX(100%)";
 
   return (
     <header
@@ -20,31 +24,93 @@ const Header: React.FC = () => {
 
       <nav className="relative z-10 flex items-center justify-between p-6">
         <div className="flex items-center space-x-8">
-          <h1 className="text-2xl font-bold text-white">ApexTalent</h1>
-          <div className="hidden md:flex space-x-6">
-            <a href="#" className="text-white hover:text-gray-300">
-              Home
-            </a>
-            <a href="#" className="text-white hover:text-gray-300">
-              Find Jobs
-            </a>
-            <a href="#" className="text-white hover:text-gray-300">
-              Find Candidates
-            </a>
-            <a href="#" className="text-white hover:text-gray-300">
-              Articles
-            </a>
-          </div>
+          <Link to="/" className="text-2xl font-bold text-white">
+            ApexTalent
+          </Link>
         </div>
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost" className="text-white">
-            Log In
+
+        <div className="hidden md:flex space-x-6">
+          <Link to="/" className="text-white hover:text-gray-300">
+            Home
+          </Link>
+          <Link to="/jobs" className="text-white hover:text-gray-300">
+            Find Jobs
+          </Link>
+          <Link to="/candidates" className="text-white hover:text-gray-300">
+            Find Candidates
+          </Link>
+          <Link to="/blogs" className="text-white hover:text-gray-300">
+            Blogs
+          </Link>
+          <Link to="/testimonials" className="text-white hover:text-gray-300">
+          Testimonials
+          </Link>
+        </div>
+
+        <div className="hidden md:flex items-center space-x-4">
+          <Button variant="ghost" className="bg-indigo-600 hover:bg-indigo-700">
+            <Link to="/login">Log In</Link>
           </Button>
           <Button className="bg-indigo-600 hover:bg-indigo-700">
-            Post Job
+            <Link to="/post-job">Post Job</Link>
+          </Button>
+        </div>
+
+        <div className="md:hidden">
+          <Button
+            variant="ghost"
+            className="text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X /> : <Menu />}
           </Button>
         </div>
       </nav>
+
+      <div
+        className="md:hidden fixed top-0 right-0 bottom-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out"
+        style={{ transform: menuTransform }}
+      >
+        <div className="flex flex-col p-4">
+          <Button
+            variant="ghost"
+            className="self-end mb-4"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <X />
+          </Button>
+          <Link to="/" className="py-2 text-gray-800">
+            Home
+          </Link>
+          <Link to="/jobs" className="py-2 text-gray-800 hover:text-indigo-600">
+            Find Jobs
+          </Link>
+          <Link
+            to="/candidates"
+            className="py-2 text-gray-800 hover:text-indigo-600"
+          >
+            Find Candidates
+          </Link>
+          <Link
+            to="/blogs"
+            className="py-2 text-gray-800 hover:text-indigo-600"
+          >
+            Blogs
+          </Link>
+          <Link
+            to="/login"
+            className="py-2 text-gray-800 hover:text-indigo-600"
+          >
+            Log In
+          </Link>
+          <Link
+            to="/post-job"
+            className="py-2 text-gray-800 bg-indigo-600 "
+          >
+            Post Job
+          </Link>
+        </div>
+      </div>
 
       <div className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] px-4 text-center">
         <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
