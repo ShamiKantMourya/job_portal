@@ -2,6 +2,7 @@ import React from "react";
 
 import { Button } from "./UI/Button";
 import { blogPosts } from "../types/data";
+import { Link } from "react-router-dom";
 
 const BlogContainer: React.FC = () => {
   return (
@@ -19,8 +20,8 @@ const BlogContainer: React.FC = () => {
               <div className="p-6">
                 <h3 className="font-semibold text-xl mb-2">{post.title}</h3>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                <Button variant="link" className="text-indigo-600 p-0">
-                  Read more
+                <Button variant="link" className="text-white bg-black">
+                  <Link to="/blogs">Read more</Link>
                 </Button>
               </div>
             </div>
