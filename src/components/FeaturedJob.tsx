@@ -1,6 +1,7 @@
 import React from "react";
-
 import { Clock, MapPin, DollarSign } from "lucide-react";
+import { Link } from "react-router-dom";
+
 import { Button } from "./UI/Button";
 import { featuredJobs } from "../types/data";
 
@@ -54,12 +55,16 @@ const FeaturedJob: React.FC = () => {
                   </span>
                 ))}
               </div>
-              <Button className="w-full text-white bg-black">Apply for this Job</Button>
+              <Button className="w-full text-white bg-black">
+                Apply for this Job
+              </Button>
             </div>
           ))}
         </div>
         <div className="text-center mt-8">
-          <Button variant="outline" className="text-white bg-black">Load More Jobs</Button>
+          <Button variant="outline" className="text-white bg-black">
+            <Link to="/jobs">Load More Jobs</Link>
+          </Button>
         </div>
       </div>
     </section>
