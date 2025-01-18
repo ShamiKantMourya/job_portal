@@ -18,7 +18,6 @@ const SignUp: React.FC = () => {
     confirmPassword: "",
   });
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const navigate = useNavigate();
@@ -167,7 +166,7 @@ const SignUp: React.FC = () => {
               <Input
                 id="confirmPassword"
                 name="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 autoComplete="new-password"
                 required
                 className="pl-10 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
@@ -178,9 +177,9 @@ const SignUp: React.FC = () => {
               <button
                 type="button"
                 className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                onClick={() => setShowPassword(!showPassword)}
               >
-                {showConfirmPassword ? (
+                {showPassword ? (
                   <EyeOff className="h-5 w-5 text-gray-400" />
                 ) : (
                   <Eye className="h-5 w-5 text-gray-400" />
