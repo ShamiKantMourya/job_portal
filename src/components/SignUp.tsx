@@ -1,10 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff, Mail, Lock, User, Building,Github } from "lucide-react";
+import {
+  Eye,
+  EyeOff,
+  Mail,
+  Lock,
+  User,
+  Building,
+  Sun,
+  Moon,
+} from "lucide-react";
 
 import { Button } from "./UI/Button";
 import { Input } from "./UI/Input";
+import { useTheme } from "../contexts/ThemeContext";
 
 type SignupType = "employee" | "recruiter";
 
@@ -19,6 +29,7 @@ const SignUp: React.FC = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   const navigate = useNavigate();
 
@@ -61,7 +72,19 @@ const SignUp: React.FC = () => {
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+      <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
+        <div className="absolute top-4 right-4">
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800"
+          >
+            {isDarkMode ? (
+              <Sun className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+            ) : (
+              <Moon className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+            )}
+          </button>
+        </div>
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
             Create your account
@@ -90,32 +113,30 @@ const SignUp: React.FC = () => {
           </Button>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md shadow-sm -space-y-px">
+          <div className="space-y-4">
             {signupType === "employee" ? (
-              <>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-                  <Input
-                    id="username"
-                    name="username"
-                    type="text"
-                    required
-                    className="pl-10 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
-                    placeholder="Username"
-                    value={formData.username}
-                    onChange={handleInputChange}
-                  />
-                </div>
-              </>
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-300 h-5 w-5" />
+                <Input
+                  id="username"
+                  name="username"
+                  type="text"
+                  required
+                  className="pl-10 w-full"
+                  placeholder="Username"
+                  value={formData.username}
+                  onChange={handleInputChange}
+                />
+              </div>
             ) : (
               <div className="relative">
-                <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white h-5 w-5" />
+                <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-300 h-5 w-5" />
                 <Input
                   id="companyName"
                   name="companyName"
                   type="text"
                   required
-                  className="pl-10 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                  className="pl-10 w-full"
                   placeholder="Company Name"
                   value={formData.companyName}
                   onChange={handleInputChange}
@@ -123,28 +144,28 @@ const SignUp: React.FC = () => {
               </div>
             )}
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-300 h-5 w-5" />
               <Input
                 id="email-address"
                 name="email"
                 type="email"
                 autoComplete="email"
                 required
-                className="pl-10 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                className="pl-10 w-full"
                 placeholder="Email address"
                 value={formData.email}
                 onChange={handleInputChange}
               />
             </div>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-300 h-5 w-5" />
               <Input
                 id="password"
                 name="password"
                 type={showPassword ? "text" : "password"}
                 autoComplete="new-password"
                 required
-                className="pl-10 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                className="pl-10 pr-10 w-full"
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleInputChange}
@@ -155,21 +176,21 @@ const SignUp: React.FC = () => {
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400" />
+                  <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-300" />
                 ) : (
-                  <Eye className="h-5 w-5 text-gray-400" />
+                  <Eye className="h-5 w-5 text-gray-400 dark:text-gray-300" />
                 )}
               </button>
             </div>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-300 h-5 w-5" />
               <Input
                 id="confirmPassword"
                 name="confirmPassword"
                 type={showPassword ? "text" : "password"}
                 autoComplete="new-password"
                 required
-                className="pl-10 appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                className="pl-10 pr-10 w-full"
                 placeholder="Confirm Password"
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
@@ -180,13 +201,14 @@ const SignUp: React.FC = () => {
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-gray-400" />
+                  <EyeOff className="h-5 w-5 text-gray-400 dark:text-gray-300" />
                 ) : (
-                  <Eye className="h-5 w-5 text-gray-400" />
+                  <Eye className="h-5 w-5 text-gray-400 dark:text-gray-300" />
                 )}
               </button>
             </div>
           </div>
+
           {Object.keys(errors).map((key) => (
             <p key={key} className="text-red-500 text-xs italic">
               {errors[key]}
@@ -202,7 +224,7 @@ const SignUp: React.FC = () => {
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
             <div className="mt-6 flex gap-4">
-              <Button variant="ghost" className="w-full flex items-center justify-center">
+              <Button variant="ghost" className="w-full">
                 <svg
                   className="h-5 w-5 mr-2"
                   xmlns="http://www.w3.org/2000/svg"
@@ -217,8 +239,18 @@ const SignUp: React.FC = () => {
                 </svg>
                 Google
               </Button>
-              <Button className="w-full flex items-center justify-center">
-               <Github/>
+              <Button variant="ghost" className="w-full">
+                <svg
+                  className="h-5 w-5 mr-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M6.22 3.22a.75.75 0 011.06 0l7.78 7.78a.75.75 0 11-1.06 1.06l-7.78-7.78a.75.75 0 010-1.06z"
+                    clipRule="evenodd"
+                  />
+                </svg>
                 Github
               </Button>
             </div>
