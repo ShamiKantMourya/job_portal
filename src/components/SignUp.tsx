@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff, Mail, Lock, User, Building } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, Building,Github } from "lucide-react";
 
 import { Button } from "./UI/Button";
 import { Input } from "./UI/Input";
@@ -109,7 +109,7 @@ const SignUp: React.FC = () => {
               </>
             ) : (
               <div className="relative">
-                <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white h-5 w-5" />
                 <Input
                   id="companyName"
                   name="companyName"
@@ -202,7 +202,7 @@ const SignUp: React.FC = () => {
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
             <div className="mt-6 flex gap-4">
-              <Button variant="ghost" className="w-full">
+              <Button variant="ghost" className="w-full flex items-center justify-center">
                 <svg
                   className="h-5 w-5 mr-2"
                   xmlns="http://www.w3.org/2000/svg"
@@ -217,18 +217,8 @@ const SignUp: React.FC = () => {
                 </svg>
                 Google
               </Button>
-              <Button variant="ghost" className="w-full">
-                <svg
-                  className="h-5 w-5 mr-2"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    d="M6.22 3.22a.75.75 0 011.06 0l7.78 7.78a.75.75 0 11-1.06 1.06l-7.78-7.78a.75.75 0 010-1.06z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+              <Button className="w-full flex items-center justify-center">
+               <Github/>
                 Github
               </Button>
             </div>
