@@ -272,6 +272,14 @@ const SignUp: React.FC = () => {
             Already have an account? Login
           </Link>
         </div>
+        <div className="text-center">
+                  <Link
+                    to="/"
+                    className="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300"
+                  >
+                    Back to Home
+                  </Link>
+                </div>
       </div>
     </div>
   );
