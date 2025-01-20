@@ -71,3 +71,7 @@ html {
   color: white;
 }
 
+input {
+  background-color: transparent;
+}
+
