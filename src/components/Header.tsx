@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Search, MapPin, Menu, X } from "lucide-react";
+import { Search, MapPin, Menu, X, User } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Button } from "./UI/Button";
@@ -11,7 +11,11 @@ const Header: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [location, setLocation] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const menuTransform = isMenuOpen ? "translateX(0)" : "translateX(100%)";
+
+  const isAuthenticated: boolean = false;
+  const userType: string = "";
 
   return (
     <header
@@ -25,7 +29,7 @@ const Header: React.FC = () => {
       <nav className="relative z-10 flex items-center justify-between p-6">
         <div className="flex items-center space-x-8">
           <Link to="/" className="text-2xl font-bold text-white">
-            ApexTalent
+            DreamDesk
           </Link>
         </div>
 
@@ -33,27 +37,37 @@ const Header: React.FC = () => {
           <Link to="/" className="text-white hover:text-gray-300">
             Home
           </Link>
-          <Link to="/jobs" className="text-white hover:text-gray-300">
-            Find Jobs
-          </Link>
-          <Link to="/candidates" className="text-white hover:text-gray-300">
-            Find Candidates
-          </Link>
+          {userType ? (
+            <Link to="/jobs" className="text-white hover:text-gray-300">
+              Find Candidates
+            </Link>
+          ) : (
+            <Link to="/candidates" className="text-white hover:text-gray-300">
+              Find Jobs
+            </Link>
+          )}
           <Link to="/blogs" className="text-white hover:text-gray-300">
             Blogs
           </Link>
-          <Link to="/testimonials" className="text-white hover:text-gray-300">
-          Testimonials
-          </Link>
+          {isAuthenticated ? (
+            <Link to="/testimonials" className="text-white hover:text-gray-300">
+              Application Status
+            </Link>
+          ) : null}
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button variant="ghost" className="bg-indigo-600 hover:bg-indigo-700">
+          <Button className="bg-indigo-600 hover:bg-indigo-700">
             <Link to="/login">Log In</Link>
           </Button>
-          <Button className="bg-indigo-600 hover:bg-indigo-700">
-            <Link to="/post-job">Post Job</Link>
+          <Button>
+            <User />
           </Button>
+          {
+            userType ? <Button className="bg-indigo-600 hover:bg-indigo-700">
+            <Link to="/post-job">Post Job</Link>
+          </Button> : null
+          }
         </div>
 
         <div className="md:hidden">
@@ -82,15 +96,15 @@ const Header: React.FC = () => {
           <Link to="/" className="py-2 text-gray-800">
             Home
           </Link>
-          <Link to="/jobs" className="py-2 text-gray-800 hover:text-indigo-600">
-            Find Jobs
-          </Link>
-          <Link
-            to="/candidates"
-            className="py-2 text-gray-800 hover:text-indigo-600"
-          >
-            Find Candidates
-          </Link>
+          {userType ? (
+            <Link to="/jobs" className="text-white hover:text-gray-300">
+              Find Candidates
+            </Link>
+          ) : (
+            <Link to="/candidates" className="text-white hover:text-gray-300">
+              Find Jobs
+            </Link>
+          )}
           <Link
             to="/blogs"
             className="py-2 text-gray-800 hover:text-indigo-600"
@@ -103,12 +117,11 @@ const Header: React.FC = () => {
           >
             Log In
           </Link>
-          <Link
-            to="/post-job"
-            className="py-2 text-gray-800 bg-indigo-600 "
-          >
-            Post Job
-          </Link>
+          {
+            userType ? <Button className="bg-indigo-600 hover:bg-indigo-700">
+            <Link to="/post-job">Post Job</Link>
+          </Button> : null
+          }
         </div>
       </div>
 
