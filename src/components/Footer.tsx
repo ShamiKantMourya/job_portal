@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-indigo-600 rounded-lg transform rotate-12 transition-transform duration-300 hover:rotate-45" />
-              <h3 className="font-bold text-xl">Apex Talent</h3>
+              <h3 className="font-bold text-xl">DreamDesk</h3>
             </div>
             <p className="text-gray-600">
               Connecting talented individuals with their dream careers.
@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
         <div className="mt-12 pt-8 border-t">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-600">
-              © Apex Talent 2024. All rights reserved.
+              © DreamDesk 2024. All rights reserved.
             </p>
             <div className="flex space-x-6">
               {["Terms", "Privacy", "Cookies"].map((item) => (
