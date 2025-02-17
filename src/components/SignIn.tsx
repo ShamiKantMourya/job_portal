@@ -4,13 +4,13 @@ import { Eye, EyeOff, Mail, Lock, Moon, Sun } from "lucide-react";
 
 import { Button } from "./UI/Button";
 import { Input } from "./UI/Input";
-import { useTheme } from "../contexts/ThemeContext";
+// import { useTheme } from "../contexts/ThemeContext";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const { isDarkMode, toggleDarkMode } = useTheme();
+  // const { isDarkMode, toggleDarkMode } = useTheme();
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const SignIn: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="absolute top-4 right-4">
+      {/* <div className="absolute top-4 right-4">
         <button
           onClick={toggleDarkMode}
           className="p-2 rounded-full bg-gray-200 dark:bg-gray-800"
@@ -35,7 +35,7 @@ const SignIn: React.FC = () => {
             <Moon className="h-5 w-5 text-gray-800 dark:text-gray-200" />
           )}
         </button>
-      </div>
+      </div> */}
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-white">
