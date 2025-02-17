@@ -1,16 +1,18 @@
 "use client";
 
 import React, { useState } from "react";
-import { Search, MapPin, Menu, X, User } from "lucide-react";
+import { Search, MapPin, Menu, X, User, Sun, Moon } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { Button } from "./UI/Button";
 import { Input } from "./UI/Input";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Header: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [location, setLocation] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useTheme();
 
   const menuTransform = isMenuOpen ? "translateX(0)" : "translateX(100%)";
 
@@ -63,11 +65,21 @@ const Header: React.FC = () => {
           <Button>
             <User />
           </Button>
-          {
-            userType ? <Button className="bg-indigo-600 hover:bg-indigo-700">
-            <Link to="/post-job">Post Job</Link>
-          </Button> : null
-          }
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800"
+          >
+            {isDarkMode ? (
+              <Sun className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+            ) : (
+              <Moon className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+            )}
+          </button>
+          {userType ? (
+            <Button className="bg-indigo-600 hover:bg-indigo-700">
+              <Link to="/post-job">Post Job</Link>
+            </Button>
+          ) : null}
         </div>
 
         <div className="md:hidden">
@@ -117,11 +129,21 @@ const Header: React.FC = () => {
           >
             Log In
           </Link>
-          {
-            userType ? <Button className="bg-indigo-600 hover:bg-indigo-700">
-            <Link to="/post-job">Post Job</Link>
-          </Button> : null
-          }
+          {userType ? (
+            <Button className="bg-indigo-600 hover:bg-indigo-700">
+              <Link to="/post-job">Post Job</Link>
+            </Button>
+          ) : null}
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-800"
+          >
+            {isDarkMode ? (
+              <Sun className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+            ) : (
+              <Moon className="h-5 w-5 text-gray-800 dark:text-gray-200" />
+            )}
+          </button>
         </div>
       </div>
 
